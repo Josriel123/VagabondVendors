@@ -1,0 +1,165 @@
+[gd_scene load_steps=20 format=3 uid="uid://rl8iyj01rfb6"]
+
+[ext_resource type="Script" path="res://Actors/sheep/Sheep.gd" id="1_2blxv"]
+[ext_resource type="Texture2D" uid="uid://baqkyw52jolkl" path="res://Actors/sheep/sheepsize.png" id="2_847lx"]
+[ext_resource type="AudioStream" uid="uid://cbog60twgn25u" path="res://Sounds/SheepSound.mp3" id="3_fe4l8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjqsq"]
+atlas = ExtResource("2_847lx")
+region = Rect2(32, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk4st"]
+atlas = ExtResource("2_847lx")
+region = Rect2(0, 93, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfqbs"]
+atlas = ExtResource("2_847lx")
+region = Rect2(32, 93, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcuyk"]
+atlas = ExtResource("2_847lx")
+region = Rect2(64, 93, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57r6h"]
+atlas = ExtResource("2_847lx")
+region = Rect2(0, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3i3t"]
+atlas = ExtResource("2_847lx")
+region = Rect2(32, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp0wp"]
+atlas = ExtResource("2_847lx")
+region = Rect2(64, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqlb4"]
+atlas = ExtResource("2_847lx")
+region = Rect2(0, 31, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qhaa"]
+atlas = ExtResource("2_847lx")
+region = Rect2(32, 31, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytle1"]
+atlas = ExtResource("2_847lx")
+region = Rect2(64, 31, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ptxh"]
+atlas = ExtResource("2_847lx")
+region = Rect2(0, 62, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrdas"]
+atlas = ExtResource("2_847lx")
+region = Rect2(32, 62, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7keq"]
+atlas = ExtResource("2_847lx")
+region = Rect2(64, 62, 32, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7s6kr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjqsq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk4st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfqbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcuyk")
+}],
+"loop": true,
+"name": &"walking_back",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57r6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3i3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp0wp")
+}],
+"loop": true,
+"name": &"walking_front",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqlb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qhaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytle1")
+}],
+"loop": true,
+"name": &"walking_left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ptxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrdas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7keq")
+}],
+"loop": true,
+"name": &"walking_right",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkqdk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjk5c"]
+
+[node name="sheep" type="CharacterBody2D"]
+z_index = 4
+y_sort_enabled = true
+script = ExtResource("1_2blxv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7s6kr")
+animation = &"walking_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bkqdk")
+
+[node name="changestate" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="walkingtimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="MeeTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cjk5c")
+
+[node name="MeeeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fe4l8")
+volume_db = -8.0
+bus = &"SFX"
+
+[connection signal="timeout" from="changestate" to="." method="_on_changestate_timeout"]
+[connection signal="timeout" from="walkingtimer" to="." method="_on_walking_timeout"]
+[connection signal="timeout" from="MeeTimer" to="." method="_on_mee_timer_timeout"]

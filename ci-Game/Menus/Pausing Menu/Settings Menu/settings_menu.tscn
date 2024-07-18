@@ -1,0 +1,198 @@
+[gd_scene load_steps=13 format=3 uid="uid://bqj138f31ttp7"]
+
+[ext_resource type="Script" path="res://Menus/Pausing Menu/Settings Menu/settings_menu.gd" id="1_hvboc"]
+
+[sub_resource type="SystemFont" id="SystemFont_or4fi"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a78kl"]
+bg_color = Color(0.113725, 0.4, 0.733333, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_l0qk5"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_yhti5"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_qdojf"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_7s86k"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7rhw"]
+bg_color = Color(0.247059, 0.278431, 0.286275, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_ktlju"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="SystemFont" id="SystemFont_f71rj"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="SystemFont" id="SystemFont_loybo"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7i84"]
+bg_color = Color(0.113725, 0.4, 0.733333, 1)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hvboc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_or4fi")
+theme_override_font_sizes/font_size = 45
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_a78kl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 35
+
+[node name="General" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_l0qk5")
+theme_override_font_sizes/font_size = 30
+text = "General"
+
+[node name="Graphics" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_yhti5")
+theme_override_font_sizes/font_size = 30
+text = "Graphics
+"
+
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_qdojf")
+theme_override_font_sizes/font_size = 30
+text = "Controls"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_7s86k")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_p7rhw")
+text = "Volume
+"
+
+[node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="Brightness" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_ktlju")
+theme_override_font_sizes/font_size = 25
+text = "Brightness"
+
+[node name="BrightnessSlider" type="HSlider" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 0.8
+max_value = 1.4
+step = 0.01
+value = 1.0
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_f71rj")
+theme_override_font_sizes/font_size = 25
+text = "Fullscreen
+"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = -48
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_fonts/font = SubResource("SystemFont_loybo")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_r7i84")
+text = "Back"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_button_up"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer2/PanelContainer/VBoxContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]

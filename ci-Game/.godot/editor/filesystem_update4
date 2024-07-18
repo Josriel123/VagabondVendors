@@ -1,0 +1,14 @@
+res://Menus/Main Menu/Main Menu.tscn
+res://Inventory/Inv_UI.gd
+res://Inventory/player_inv.tres
+res://Inventory/items/stick.tres
+res://Inventory/cart_inv.tres
+res://Actors/Player/Player.tscn
+res://Actors/Slime/enemy.tscn
+res://Worlds/Objects/Trees/trees.tscn
+res://Actors/sheep/New Sheep.tscn
+res://Actors/sheep/Town Sheep/Town Sheep.tscn
+res://Worlds/world.tscn
+res://Menus/Pausing Menu/pause_menu.tscn
+res://Menus/Main Menu/main_menu.tscn
+res://Actors/Cart/Cart.tscn

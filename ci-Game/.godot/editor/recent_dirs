@@ -1,0 +1,33 @@
+<<<<<<< HEAD
+res://Actors/sprites/characters
+=======
+res://Actors/Player
+>>>>>>> ba9f64c4e73ab2210d38155de3c8516d23e5e637
+res://Actors/sprites/tilesets
+res://Actors/Slime
+<<<<<<< HEAD
+res://Menus/Main Menu
+=======
+res://Inventory
+<<<<<<< HEAD
+res://Actors/Cart
+=======
+res://
+res://Actors/sprites/objects
+res://Inventory/items
+>>>>>>> 97bdb0d3230ca4dbd7fcfc9073806a38d3e2be21
+>>>>>>> 3cd41f3d81c71849fb923f81e9deaf7a56919569
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+res://Actors/sheep/Town Sheep
+=======
+>>>>>>> 2b3d73627d98571f64b76383c774f8e47888af8b
+res://Worlds
+>>>>>>> d530adf8dcd6a87fcf30ea40c0577342cf33f9db
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 97bdb0d3230ca4dbd7fcfc9073806a38d3e2be21
+>>>>>>> 3cd41f3d81c71849fb923f81e9deaf7a56919569

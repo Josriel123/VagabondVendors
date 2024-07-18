@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba8mnpe0tg62n"]
+
+[ext_resource type="Script" path="res://Worlds/Objects/Trees/Trees.gd" id="1_u68b3"]
+[ext_resource type="Resource" uid="uid://cu40ltwv6vmeb" path="res://Inventory/items/apple.tres" id="2_2p4b5"]
+[ext_resource type="Resource" uid="uid://cye01ec7yfg18" path="res://Inventory/items/stick.tres" id="3_yj5ki"]
+[ext_resource type="Texture2D" uid="uid://b2otenv2cuvh6" path="res://Worlds/Objects/Trees/tree_2.png" id="4_4br4w"]
+[ext_resource type="AudioStream" uid="uid://c1lpg3q5w6s5o" path="res://Sounds/TreeShaking.mp3" id="5_vvd5j"]
+[ext_resource type="AudioStream" uid="uid://dasf428yaaga5" path="res://Sounds/collectSound.mp3" id="6_6m6m2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eeg1"]
+size = Vector2(25, 22)
+
+[node name="Trees" type="Node2D"]
+y_sort_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["tree"]]
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_u68b3")
+apple = ExtResource("2_2p4b5")
+stick = ExtResource("3_yj5ki")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("4_4br4w")
+offset = Vector2(12, -50)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(14, 0, 9, 0, 8, 2, -5, 2, -8, 0, -11, 0, -11, -4, -7, -5, -2, -6, 3, -6, 6, -6, 9, -5, 13, -4)
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+position = Vector2(1.5, -7)
+shape = SubResource("RectangleShape2D_2eeg1")
+
+[node name="TreeShakingSound" type="AudioStreamPlayer2D" parent="StaticBody2D"]
+stream = ExtResource("5_vvd5j")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="CollectSound" type="AudioStreamPlayer2D" parent="StaticBody2D"]
+stream = ExtResource("6_6m6m2")
+volume_db = 2.0
+
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_area_2d_body_exited"]

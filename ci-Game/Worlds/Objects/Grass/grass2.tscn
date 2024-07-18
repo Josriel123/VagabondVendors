@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cffwwoqkdaa4f"]
+
+[ext_resource type="Script" path="res://Worlds/Objects/Grass/grass2.gd" id="1_6uxd2"]
+[ext_resource type="Texture2D" uid="uid://bb1o1kynhakpe" path="res://Worlds/Objects/Grass/Tall Grass.png" id="1_p5hq8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua0br"]
+atlas = ExtResource("1_p5hq8")
+region = Rect2(84, 0, 21, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxsb6"]
+atlas = ExtResource("1_p5hq8")
+region = Rect2(84, 10, 21, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ffrnb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua0br")
+}],
+"loop": true,
+"name": &"grass1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxsb6")
+}],
+"loop": true,
+"name": &"grass2",
+"speed": 5.0
+}]
+
+[node name="Grass2" type="Node2D"]
+script = ExtResource("1_6uxd2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ffrnb")
+animation = &"grass1"

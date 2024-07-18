@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b46by5g5g7tsf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xesky"]
+load_path = "res://.godot/imported/back00.png-7ffc6870a7ec1d32ac9f4d8f75101b26.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ptxnc"]
+load_path = "res://.godot/imported/back01.png-1eb8d95a76a79f8316e957df0a0935ad.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_foj8d"]
+load_path = "res://.godot/imported/back02.png-22e2b2488bed783f891bbe89ff701e1a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kymkn"]
+load_path = "res://.godot/imported/back03.png-920fa95dd522389293180de6c695afe0.ctex"
+
+[node name="background" type="Node2D"]
+
+[node name="Back00" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = SubResource("CompressedTexture2D_xesky")
+
+[node name="Back01" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = SubResource("CompressedTexture2D_ptxnc")
+
+[node name="Back02" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = SubResource("CompressedTexture2D_foj8d")
+
+[node name="Back03" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = SubResource("CompressedTexture2D_kymkn")

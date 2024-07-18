@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://daemwhhla4w8y"]
+
+[ext_resource type="Texture2D" uid="uid://hkj1y3fyhc3c" path="res://Menus/Main Menu/back00.png" id="1_0a4vw"]
+[ext_resource type="Texture2D" uid="uid://bsw34ajay20wc" path="res://Menus/Main Menu/back01.png" id="2_5qqee"]
+[ext_resource type="Texture2D" uid="uid://bd2swpbi8lnql" path="res://Menus/Main Menu/back02.png" id="3_is3cu"]
+[ext_resource type="Texture2D" uid="uid://cokykj5fshnca" path="res://Menus/Main Menu/back03.png" id="4_nogeo"]
+
+[sub_resource type="GDScript" id="GDScript_c4ykp"]
+resource_name = "Buttons"
+script/source = "extends Control
+
+var startWorld = preload(\"res://Worlds/world.tscn\") 
+
+func _enter_tree():
+	set_process(true)
+	set_process_input(true)
+	
+func _on_start_pressed():
+	get_tree().change_scene_to_packed(startWorld)
+
+func _on_quit_pressed():
+	get_tree().quit()
+"
+
+[sub_resource type="GDScript" id="GDScript_lqbgi"]
+script/source = "extends Sprite2D
+func _process(delta):
+	position += (get_global_mouse_position()*2*delta)-position
+"
+
+[sub_resource type="GDScript" id="GDScript_70aad"]
+script/source = "extends Sprite2D
+func _process(delta):
+	position += (get_global_mouse_position()*2*delta)-position
+"
+
+[sub_resource type="SystemFont" id="SystemFont_ap260"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r1hrl"]
+
+[sub_resource type="SystemFont" id="SystemFont_ab01q"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_et6ia"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchor_right = 1.17
+anchor_bottom = 1.0
+offset_right = -195.84
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+script = SubResource("GDScript_c4ykp")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(620, 348)
+scale = Vector2(3.06636, 2.34233)
+
+[node name="background" type="Sprite2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(-11.7403, 0)
+scale = Vector2(1.01177, 1.00896)
+texture = ExtResource("1_0a4vw")
+
+[node name="clouds" type="Sprite2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(-11.0881, 1.7077)
+texture = ExtResource("2_5qqee")
+script = SubResource("GDScript_lqbgi")
+
+[node name="stars" type="Sprite2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(-2.28284, 2.56155)
+texture = ExtResource("3_is3cu")
+script = SubResource("GDScript_70aad")
+
+[node name="title" type="Sprite2D" parent="Node2D"]
+texture_filter = 1
+position = Vector2(-20.5455, 0)
+texture = ExtResource("4_nogeo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+alignment = 2
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ap260")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r1hrl")
+text = "Start"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ab01q")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_et6ia")
+text = "Quit
+"
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator3" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

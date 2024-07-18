@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckj1min22v2aa"]
+
+[ext_resource type="Script" path="res://Worlds/Towns/Building.gd" id="1_om5mp"]
+[ext_resource type="Texture2D" uid="uid://bq0h17ijpiqx8" path="res://Actors/sprites/objects/dek1lf1-611eef51-14d6-4b95-a04e-a4049b4b5648.png" id="2_8iows"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_50flc"]
+radius = 219.185
+
+[sub_resource type="Gradient" id="Gradient_88bpr"]
+offsets = PackedFloat32Array(0, 0.63)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b0jyr"]
+gradient = SubResource("Gradient_88bpr")
+fill = 1
+fill_from = Vector2(0.509146, 0.503049)
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(0, -70)
+script = ExtResource("1_om5mp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 70)
+texture = ExtResource("2_8iows")
+offset = Vector2(0, -70)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 62)
+shape = SubResource("CircleShape2D_50flc")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-54, 50)
+color = Color(1, 0.588235, 0.392157, 1)
+texture = SubResource("GradientTexture2D_b0jyr")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(46, 51)
+color = Color(1, 0.588235, 0.392157, 1)
+texture = SubResource("GradientTexture2D_b0jyr")

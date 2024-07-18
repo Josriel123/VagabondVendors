@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://25jdgg5q5wu2"]
+
+[ext_resource type="Texture2D" uid="uid://qier6aspyqlt" path="res://Worlds/Tile Sets/Special Tiles.png" id="1_o7eoj"]
+[ext_resource type="Script" path="res://Worlds/Towns/Town Hall.gd" id="1_oayld"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_oayld")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 6
+y_sort_enabled = true
+texture = ExtResource("1_o7eoj")

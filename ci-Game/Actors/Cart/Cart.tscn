@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnrfcld3pssbh"]
+
+[ext_resource type="Script" path="res://Actors/Cart/cart.gd" id="1_2syry"]
+[ext_resource type="Texture2D" uid="uid://cnbne0535untl" path="res://Actors/Cart/pixil-frame-0.png" id="2_72xu2"]
+[ext_resource type="Resource" uid="uid://dvxs2sgrk6jqq" path="res://Inventory/cart_inv.tres" id="2_i403h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cod3"]
+size = Vector2(62, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alk8k"]
+size = Vector2(50, 5.75)
+
+[sub_resource type="Gradient" id="Gradient_wsdr4"]
+offsets = PackedFloat32Array(0, 0.63)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_do4ow"]
+gradient = SubResource("Gradient_wsdr4")
+fill = 1
+fill_from = Vector2(0.509146, 0.503049)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Cart"]]
+y_sort_enabled = true
+script = ExtResource("1_2syry")
+inv = ExtResource("2_i403h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_72xu2")
+offset = Vector2(0, -5)
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(2, -3.5)
+shape = SubResource("RectangleShape2D_8cod3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5.125)
+shape = SubResource("RectangleShape2D_alk8k")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(2, -4)
+color = Color(1, 0.588235, 0.392157, 1)
+texture = SubResource("GradientTexture2D_do4ow")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_exited"]

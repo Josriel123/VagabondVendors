@@ -1,0 +1,207 @@
+[gd_scene load_steps=5 format=3 uid="uid://xf300v3aio6v"]
+
+[ext_resource type="Texture2D" uid="uid://bypnn00ubkcw3" path="res://Actors/sprites/objects/inventory-slot.png" id="1_3fkbi"]
+[ext_resource type="Script" path="res://Actors/sheep/sheep_quests.gd" id="1_yjqfh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt2o7"]
+bg_color = Color(0.376471, 0.509804, 0.92549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26jqs"]
+bg_color = Color(0.2, 0.847059, 0.176471, 1)
+
+[node name="Sheep Quests" type="Control"]
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 119.0
+offset_bottom = 73.0
+script = ExtResource("1_yjqfh")
+
+[node name="quest1_ui" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3fkbi")
+
+[node name="Name" type="RichTextLabel" parent="quest1_ui"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 230.0
+offset_bottom = 32.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 20
+text = "Mayor Sheep Quest:"
+
+[node name="Quest" type="RichTextLabel" parent="quest1_ui"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 20.0
+offset_right = 201.0
+offset_bottom = 70.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 17
+text = "Could you collect 5 slimes?
+"
+
+[node name="yesButton1" type="Button" parent="quest1_ui"]
+modulate = Color(0.372549, 0.541176, 0, 1)
+layout_mode = 0
+offset_left = 17.0
+offset_top = 45.0
+offset_right = 79.0
+offset_bottom = 79.0
+scale = Vector2(0.5, 0.5)
+text = "Yes"
+
+[node name="noButton1" type="Button" parent="quest1_ui"]
+modulate = Color(0.862745, 0, 0.113725, 1)
+layout_mode = 0
+offset_left = 65.0
+offset_top = 46.0
+offset_right = 127.0
+offset_bottom = 80.0
+scale = Vector2(0.5, 0.5)
+text = "No
+"
+
+[node name="quest1_active__ui" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3fkbi")
+
+[node name="Name" type="RichTextLabel" parent="quest1_active__ui"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 214.0
+offset_bottom = 38.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 20
+text = "Mayor Sheep Quest:"
+
+[node name="Quest" type="RichTextLabel" parent="quest1_active__ui"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 206.0
+offset_bottom = 74.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 17
+text = "Bring me 5 slimes
+"
+
+[node name="ProgressBar" type="ProgressBar" parent="quest1_active__ui"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 44.0
+offset_right = 182.0
+offset_bottom = 82.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_rt2o7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_26jqs")
+max_value = 5.0
+step = 1.0
+value = 2.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="quest1_active__ui/ProgressBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 164.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="finished_quest" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3fkbi")
+
+[node name="Name" type="RichTextLabel" parent="finished_quest"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 230.0
+offset_bottom = 34.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 20
+text = "Mayor Sheep Quest:"
+
+[node name="Quest" type="RichTextLabel" parent="finished_quest"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 22.0
+offset_right = 200.0
+offset_bottom = 106.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 17
+text = "Completed! A cart has spawned in the map as a reward
+"
+
+[node name="Acccept" type="Button" parent="finished_quest"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.671
+anchor_right = 0.933
+anchor_bottom = 0.932
+offset_left = -0.041008
+offset_top = 0.0169983
+offset_right = 34.973
+offset_bottom = 18.964
+scale = Vector2(0.5, 0.5)
+text = "OK"
+
+[node name="no_quest" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3fkbi")
+
+[node name="Name" type="RichTextLabel" parent="no_quest"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 6.0
+offset_right = 241.0
+offset_bottom = 32.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 20
+text = "No More Quests"
+
+[node name="Quest" type="RichTextLabel" parent="no_quest"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 20.0
+offset_right = 201.0
+offset_bottom = 70.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 17
+text = "Find a Mayor from another village"
+
+[connection signal="pressed" from="quest1_ui/yesButton1" to="." method="_on_yes_button_1_pressed"]
+[connection signal="pressed" from="quest1_ui/noButton1" to="." method="_on_no_button_1_pressed"]
+[connection signal="pressed" from="finished_quest/Acccept" to="." method="_on_acccept_pressed"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnqu2nbe34niu"]
+
+[ext_resource type="Script" path="res://Worlds/Objects/Rocks/StaticBody2D.gd" id="1_cfl7d"]
+[ext_resource type="Texture2D" uid="uid://cq8qfgp0pw40s" path="res://Worlds/Objects/Rocks/Untitled 3.png" id="2_5nn62"]
+[ext_resource type="Script" path="res://Worlds/Objects/Rocks/AnimatedSprite2D.gd" id="3_mqs20"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60wma"]
+atlas = ExtResource("2_5nn62")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba4cb"]
+atlas = ExtResource("2_5nn62")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avctw"]
+atlas = ExtResource("2_5nn62")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vub65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60wma")
+}],
+"loop": true,
+"name": &"rock1",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba4cb")
+}],
+"loop": true,
+"name": &"rock2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avctw")
+}],
+"loop": true,
+"name": &"rock3",
+"speed": 5.0
+}]
+
+[node name="Rocks" type="Node2D"]
+y_sort_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_cfl7d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+sprite_frames = SubResource("SpriteFrames_vub65")
+animation = &"rock3"
+offset = Vector2(0, -27)
+script = ExtResource("3_mqs20")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1, -28)
+polygon = PackedVector2Array(-25, 21, -25, 25, -18, 30, -5, 30, -2, 31, 6, 32, 16, 24)

@@ -69,44 +69,21 @@ func _physics_process(delta):
 	is_on_water(player_bottom_position)
 	is_on_slope(player_bottom_position)
 	slime_movement(delta)
+	
 
 func slime_movement(delta):
-	if !dead:
-		$DetectionArea/CollisionShape2D.disabled = false
-		if player_chase or animal_chase:
-			var direction
-			if player_chase:
-				direction = (player.global_position - global_position).normalized()
-			elif animal_chase:
-				direction = (animal.global_position - global_position).normalized()
-			
-			if player.global_position.distance_to(global_position) < 20 or player.global_position.distance_to(global_position) < 20:
-				$AnimatedSprite2D.play("attack")
-				slime_walking.stop()
-				
-			else:
-				if isbSlope or isWater:
-					global_position += direction * lower_speed * delta
-					$AnimatedSprite2D.play("walking")
-					
-				else:
-					global_position += direction * speed * delta
-					$AnimatedSprite2D.play("walking")
-				if !slime_walking.playing:
-					slime_walking.play()
-				
-			if direction.x < 0:
-					$AnimatedSprite2D.flip_h = true
-			else:
-					$AnimatedSprite2D.flip_h = false
-		else:
-			$AnimatedSprite2D.play("idle")
-			slime_walking.stop()
-	else:
-		$AnimatedSprite2D.play("death")
-		slime_walking.stop()
-	
 	move_and_slide()
+	
+	if velocity.length() > 0:
+		$AnimatedSprite2D.play("walking")
+	else:
+		$AnimatedSprite2D.play("idle")
+	
+	if velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+	else:
+		$AnimatedSprite2D.flip_h = true
+	
 
 func floors():
 	if first_floor:
@@ -208,11 +185,9 @@ func is_on_sixth_floor(player_position):
 func is_on_slope(player_bottom_position):
 	# Gets the position of the at the players position (Bottom and Center)
 	var tile_player_bpos : Vector2i = tile_map.local_to_map(player_bottom_position)
-	#var tile_player_cpos : Vector2i = tile_map.local_to_map(player_center_position)
 	
 	# Gets the data of the tile at a specific layer and tile position
 	var tile_bdata : TileData = tile_map.get_cell_tile_data(collision_layer, tile_player_bpos)
-	#var tile_cdata : TileData = tile_map.get_cell_tile_data(collision_layer, tile_player_cpos)
 
 	# Checks if there is any data at the tile at the feet of the player
 	if tile_bdata:
@@ -225,19 +200,10 @@ func is_on_slope(player_bottom_position):
 			# Sets the global variable isbSlope to true
 			isbSlope = true
 			
-	# Same process with the center of the character 
-	#elif tile_cdata:
-
-		#var is_cslope = tile_cdata.get_custom_data(is_slope_custom_data)
-		#if is_cslope:
-			#print("Center")
-			#iscSlope = true
-			
 	else:
 	
 		# If not data, then there is no slope at character position
 		isbSlope = false
-		#iscSlope = false
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("Player"):

@@ -1,9 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://ciytdj6kve7mc"]
+[gd_scene load_steps=35 format=3 uid="uid://ciytdj6kve7mc"]
 
 [ext_resource type="Script" path="res://Actors/Slime/Enemy.gd" id="1_50etn"]
 [ext_resource type="Resource" uid="uid://cy36iea5l70vs" path="res://Inventory/items/slime.tres" id="2_6xl6j"]
 [ext_resource type="Texture2D" uid="uid://b8tc75axdege5" path="res://Actors/Slime/slimez.png" id="3_f7l01"]
 [ext_resource type="AudioStream" uid="uid://uxarnikh6gss" path="res://Sounds/slimeSound.mp3" id="4_km2xa"]
+[ext_resource type="Script" path="res://States/State Machine.gd" id="5_hne8u"]
+[ext_resource type="Script" path="res://States/SlimeIdle.gd" id="6_v37cl"]
+[ext_resource type="Script" path="res://States/SlimeFollow.gd" id="7_icg8d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y65nn"]
 atlas = ExtResource("3_f7l01")
@@ -241,6 +244,20 @@ stream = ExtResource("4_km2xa")
 volume_db = -8.0
 pitch_scale = 0.5
 bus = &"SFX"
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_hne8u")
+initial_state = NodePath("SlimeIdle")
+
+[node name="SlimeIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_v37cl")
+enemy = NodePath("../..")
+move_speed = 30.0
+
+[node name="SlimeFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_icg8d")
+enemy = NodePath("../..")
+movement_speed = 70.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
